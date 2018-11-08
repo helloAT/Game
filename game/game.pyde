@@ -7,32 +7,36 @@ class enemy:
         self.endx = endx
         self.enemy = enemy
 
-class ground:
+class hole:
     def __init__(self, x1, x2):
         self.x1 = x1
-        self.x1 = x2
-    def drawline:
+        self.x2 = x2
+    def drawhole(self):
         stroke(255)
-        line(x1, height - 100, x2 , height - 100)
+        rect(self.x1, height - 100, self.x2, height)
+        print(self.x1, height - 100, self.x2 , height)
 
 def setup():
-    global death, jump, still, run1, run2
-    size(displayWidth, displayHeight)
+    global death, jump, still, run1, run2, marioy, holelist
+    size(1366, 768)
     death = loadImage("death.png")
     jump = loadImage("jump.png")
     still = loadImage("mario still.png")
     run1 = loadImage("running1.png")
     run2 = loadImage("running2.png")
     marioy = height - 149
-    platformlist = []
-    for i in range(100):
-        platform = ground(random.randint(
+    holelist = []
+    hole1 = hole(0, 100)
+    hole2 = hole(250, 350)
+    holelist.append(hole1)
+    holelist.append(hole2)
     
 def draw():
     background(0)
-    rect(0, 0, height - 99, width)
-    if not keyPressed:
-        image(still, width / 2, marioy, 50, 50)
+    rect(0, 0, width, height - 100)
+    for i in holelist:
+        i.drawhole()
+    image(still, width / 2, marioy, 50, 50)
     
 
 def keyPressed():
@@ -43,7 +47,10 @@ def keyPressed():
         while marioy < height -159:
             marioy += 10
     if key == "d":
-        for i in platformlist:
+        for i in holelist:
+            i.x1 -= 10
+            #i.x2 -= 1
+    if key == "a":
+        for i in holelist:
             i.x1 += 10
-            i.x2 += 10
-            
+            #i.x2 += 1
