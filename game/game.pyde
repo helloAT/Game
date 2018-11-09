@@ -25,10 +25,8 @@ def setup():
     run2 = loadImage("running2.png")
     marioy = height - 149
     holelist = []
-    hole1 = hole(0, 100)
-    hole2 = hole(250, 350)
-    holelist.append(hole1)
-    holelist.append(hole2)
+    for i in range(0, 1000, 100):
+        holelist.append(hole(i, random.randint(100, 150)))
     
 def draw():
     background(0)
