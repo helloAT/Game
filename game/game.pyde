@@ -14,7 +14,6 @@ class hole:
     def drawhole(self):
         stroke(255)
         rect(self.x1, height - 100, self.x2, height)
-        print(self.x1, height - 100, self.x2 , height)
 
 def setup():
     global death, jump, still, run1, run2, marioy, holelist
